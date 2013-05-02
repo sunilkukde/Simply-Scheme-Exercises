@@ -33,13 +33,10 @@
 
 (define (prepend-each a b)
   (if (empty? a)
-    b
+    '()
     (se (prepend-each (bf a) b)
         (prepend-every (first a) b))))
 
 (define (phone-spell n)
-  (if (= (count n) 1)
-    (letters n)
-    (se
-      (prepend-each (letters (first n))
-                    (phone-spell (bf n))))))
+    (if (= (count n) 1) (letters n)
+            (se (prepend-each (letters (first n)) (phone-spell (bf n))))))
