@@ -23,3 +23,9 @@
     ((apply pred (firsttwo lst)) #t)
     (else
       (true-for-any-pair? pred (cdr lst)))))
+
+; A simpler version (that I think works too)
+(define (true-for-any-pair? pred lst)
+    (if (= (length lst) 1) #f
+            (or (pred (car lst) (cadr lst)) 
+                (true-for-any-pair? pred (cdr lst)))))
